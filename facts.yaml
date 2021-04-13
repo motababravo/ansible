@@ -1,6 +1,6 @@
 ---
 - hosts: all
-remote_user: roothp
+remote_user: root
 gather_facts: yes
 
  tasks:
