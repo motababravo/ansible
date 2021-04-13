@@ -1,6 +1,7 @@
+---
 - hosts: all
 remote_user: roothp
-#gather_facts: yes
+gather_facts: yes
 
  tasks:
 - debug:
