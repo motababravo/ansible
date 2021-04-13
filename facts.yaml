@@ -1,0 +1,7 @@
+- hosts: all
+remote_user: roothp
+#gather_facts: yes
+
+ tasks:
+- debug:
+msg: "hostname:{{ansible_nodename}} memory:{{ansible_memtotal_mb}} processors:{{ansible_processor_count}}"
