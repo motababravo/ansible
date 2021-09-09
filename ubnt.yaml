@@ -1,5 +1,6 @@
 - hosts: all
 - name: Update and upgrade apt packages
+  remote_user: root
   become: true
   apt:
     upgrade: yes
