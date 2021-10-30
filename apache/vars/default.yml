@@ -1,0 +1,6 @@
+http_host: "debian.local"
+http_conf: "debian.conf"
+http_port: "80"
+app_user: "www-data"
+SOURCE_FOLDER: "/etc/apache2/sites-available/"
+DEST_FOLDER: "/etc/apache2/sites-enabled/"
