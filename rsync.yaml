@@ -1,0 +1,17 @@
+- hosts: all
+  vars:
+      ansible_python_interpreter: /usr/bin/python2
+
+  tasks:
+    - name: sync source code
+      synchronize:
+        src: "{{ item }}"
+        dest: "/tmp/{{inventory_hostname}}/"
+        mode: "pull"
+        rsync_opts:
+          - "-aW"
+          - "--ignore-existing"
+          - "--bwlimit=200000"
+      with_items:
+        - "/home/motaba"
+        - "/var/log/messages"
