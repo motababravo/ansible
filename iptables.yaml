@@ -1,0 +1,32 @@
+- name: Iptables
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Save current state of the firewall in file
+      community.general.iptables_state:
+        state: saved
+        path: /tmp/iptables_save
+      when: offline == "on"
+    - name: set "present" for DROP on tcp port "{{dport}}" rule
+      iptables:
+        chain: "INPUT"
+        protocol: "tcp"
+        destination_port: "{{mport}}"
+        jump: "DROP"
+        state: "present"
+    - name: Wait for active connections on port "{{dport}}" to drain off
+      shell: "netstat -tupan | grep :{{dport}} | grep EST | wc -l"
+      register: active_connections_count
+      until: active_connections_count.stdout == "0"
+      retries: 100
+      delay: 2
+      when: offline == "on"
+    - debug: var=active_connections_count.stdout
+      when: offline == "on"
+    - name: Restore firewall state from file
+      community.general.iptables_state:
+        state: restored
+        path: /tmp/iptables_save
+      async: "{{ ansible_timeout }}"
+      poll: 0
+      when: offline == "off"
