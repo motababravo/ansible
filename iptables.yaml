@@ -14,6 +14,7 @@
         destination_port: "{{mport}}"
         jump: "DROP"
         state: "present"
+      when: offline == "on"
     - name: Wait for active connections on port "{{dport}}" to drain off
       shell: "netstat -tupan | grep :{{dport}} | grep EST | wc -l"
       register: active_connections_count
