@@ -5,11 +5,13 @@
   
   tasks:
   - name: Collect all facts from the device
-    community.routeros.api_facts:
+    api_facts:
       hostname: {{ inventory_hostname }}
       username: {{ ansible_user }}
       password: {{ ansible_password }}
       gather_subset: all
+  
+  
   - name: Update and upgrade apt packages
     apt:
       upgrade: 'yes'
