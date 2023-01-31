@@ -5,7 +5,7 @@
   
   tasks:
   - name: Collect all facts from the device
-    api_facts:
+    community.routeros.api_facts:
       hostname: {{ inventory_hostname }}
       username: {{ ansible_user }}
       password: {{ ansible_password }}
