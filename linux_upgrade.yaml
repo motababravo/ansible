@@ -4,8 +4,8 @@
   become: yes
   
   tasks:
-  - name: Print ansible_os_family
-      debug: var=ansible_os_family
+#  - name: Print ansible_os_family
+#      debug: var=ansible_os_family
       
 #  - name: Collect all facts from the device
 #    community.routeros.api_facts:
@@ -26,7 +26,7 @@
       name: '*'
       state: latest
     when: ansible_os_family == "RedHat"
-  - name: set routeros firmware channel
+#  - name: set routeros firmware channel
 #    routeros_command:
 #      commands:
 #        - /system package update set channel=stable
