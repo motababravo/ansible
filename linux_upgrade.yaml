@@ -1,6 +1,6 @@
 - hosts: all
   vars:
-#    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: /usr/bin/python3
 #  become: yes
   
   tasks:
@@ -32,12 +32,14 @@
     when: ansible_os_family == "Windows"
 
   - name: Update and upgrade apt packages
+    become: yes
     apt:
       upgrade: 'yes'
       update_cache: yes
       cache_valid_time: 86400 
     when: ansible_os_family == "Debian"
   - name: Upgrade RHEL Family OS packages
+    become: yes
     yum:
       name: '*'
       state: latest
