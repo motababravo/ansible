@@ -31,7 +31,7 @@
       commands:
         - /system package update set channel=testing
         - /system package update install
-    when: ansible_os_family == "RouterOS"
+    when: inventory_hostname == "ax3.motaba.net"
 #  - name: upgrade packages and reboot
 #    routeros_command:
 #      commands:
