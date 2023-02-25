@@ -13,8 +13,24 @@
 #      username: {{ ansible_user }}
 #      password: {{ ansible_password }}
 #      gather_subset: all
-  
-  
+  - name: Install all security updates with automatic reboots
+    connection: winrm
+    win_updates:
+      category_names:
+      - SecurityUpdates
+      reboot: yes
+    when: ansible_os_family == "Windows"
+
+
+  - name: Install all security, critical, and rollup updates without a scheduled task
+    connection: winrm
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
+    when: ansible_os_family == "Windows"
+
   - name: Update and upgrade apt packages
     apt:
       upgrade: 'yes'
