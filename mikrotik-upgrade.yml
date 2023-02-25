@@ -1,5 +1,5 @@
 ---
-- hosts: mikrotik
+- hosts: RouterOS
   gather_facts: False
   roles:
     - mikrotik-upgrade
