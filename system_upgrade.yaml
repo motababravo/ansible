@@ -1,34 +1,16 @@
 - hosts: all
   vars:
     ansible_python_interpreter: /usr/bin/python3
-#  become: yes
   
   tasks:
-#  - name: Print ansible_os_family
-#      debug: var=ansible_os_family
-      
-#  - name: Collect all facts from the device
-#    community.routeros.api_facts:
-#      hostname: {{ inventory_hostname }}
-#      username: {{ ansible_user }}
-#      password: {{ ansible_password }}
-#      gather_subset: all
   - name: Install all security updates with automatic reboots
     connection: winrm
     win_updates:
       category_names:
       - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
       reboot: yes
-    when: ansible_os_family == "Windows"
-
-
-  - name: Install all security, critical, and rollup updates without a scheduled task
-    connection: winrm
-    win_updates:
-      category_names:
-        - SecurityUpdates
-        - CriticalUpdates
-        - UpdateRollups
     when: ansible_os_family == "Windows"
 
   - name: Update and upgrade apt packages
