@@ -1,6 +1,6 @@
 - hosts: all
-#  vars:
-#    ansible_python_interpreter: /usr/bin/python3.9
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   
   tasks:
   - name: Install all security updates with automatic reboots
@@ -27,13 +27,9 @@
       name: '*'
       state: latest
     when: ansible_os_family == "RedHat"
-#  - name: set routeros firmware channel
-#    routeros_command:
-#      commands:
-#        - /system package update set channel=testing
-#        - /system package update install
-#    when: inventory_hostname == "ax3.motaba.net"
-#  - name: upgrade packages and reboot
-#    routeros_command:
-#      commands:
-#        - /system package update install
+  - name: set routeros firmware channel
+    routeros_command:
+      commands:
+        - /system package update set channel=testing
+        - /system package update install
+    when: ansible_os_family == "RouterOS"
