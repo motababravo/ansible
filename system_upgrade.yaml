@@ -4,6 +4,9 @@
   
   tasks:
   - name: Install all security updates with automatic reboots
+    ansible_connection: winrm
+    ansible_port: 5985
+    ansible_winrm_transport: ntlm
     connection: winrm
     win_updates:
       category_names:
