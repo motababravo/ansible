@@ -26,12 +26,12 @@
       name: '*'
       state: latest
     when: ansible_os_family == "RedHat"
-  - name: set routeros firmware channel
-    routeros_command:
-      commands:
-        - /system package update set channel=testing
-        - /system package update install
-    when: inventory_hostname == "ax3.motaba.net"
+#  - name: set routeros firmware channel
+#    routeros_command:
+#      commands:
+#        - /system package update set channel=testing
+#        - /system package update install
+#    when: inventory_hostname == "ax3.motaba.net"
 #  - name: upgrade packages and reboot
 #    routeros_command:
 #      commands:
