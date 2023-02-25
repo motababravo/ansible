@@ -27,6 +27,7 @@
       name: '*'
       state: latest
     when: ansible_os_family == "RedHat"
+
   - name: Distribution
     debug:
       msg: "{{ ansible_os_family }}"
