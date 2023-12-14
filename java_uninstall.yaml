@@ -1,0 +1,9 @@
+- hosts: all
+
+  tasks:
+  - name: Uninstall All Java
+    yum:
+      name:
+        - java*
+        - jdk*
+      state: absent
