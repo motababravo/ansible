@@ -31,4 +31,6 @@
           state: latest
       - name: yum clean all
         command: yum clean all
+        args:
+          warn: false
     when: ansible_os_family == "RedHat"
