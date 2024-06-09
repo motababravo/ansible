@@ -15,17 +15,21 @@
       reboot: yes
     when: ansible_os_family == "Windows"
 
-  - name: Update and upgrade apt packages
-    become: yes
-    apt:
-      upgrade: 'yes'
-      update_cache: yes
-#      cache_valid_time: 86400 
-      autoclean: yes
-      autoremove: yes
-      purge: true
-      clean: yes
-    when: ansible_os_family == "Debian"
+  - block:
+      - name: Update and upgrade apt packages
+        become: yes
+        apt:
+          upgrade: 'yes'
+          update_cache: yes
+          cache_valid_time: 86400
+      - name: Update and upgrade apt packages
+        become: yes
+        apt:
+          autoclean: yes
+          autoremove: yes
+          purge: true
+          clean: yes
+      when: ansible_os_family == "Debian"
 
   - block:
       - name: Upgrade RHEL Family OS packages
