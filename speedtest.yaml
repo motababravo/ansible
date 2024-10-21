@@ -27,7 +27,7 @@
 
     - name: Download & unarchive Tomcat
       unarchive:
-        src: "https://{{ ansible_user }}:{{ apass }}@{{ nexus }}/repository/maven-releases/install/apache-tomcat/9.0.93/apache-tomcat-9.0.93.tar.gz"
+        src: "https://{{ ansible_user }}:{{ ansible_password }}@{{ nexus }}/repository/maven-releases/install/apache-tomcat/9.0.93/apache-tomcat-9.0.93.tar.gz"
         dest: /opt/tomcat
         remote_src: yes
         owner: tomcat
@@ -37,7 +37,7 @@
 
     - name: Tomcat Config
       unarchive:
-        src: "https://{{ ansible_user }}:{{ apass }}@{{ nexus }}/repository/maven-releases/config/tomcat-conf/1.0/tomcat-conf-1.0.zip"
+        src: "https://{{ ansible_user }}:{{ ansible_password }}@{{ nexus }}/repository/maven-releases/config/tomcat-conf/1.0/tomcat-conf-1.0.zip"
         dest: /opt/tomcat/conf
         remote_src: yes
         owner: tomcat
@@ -64,7 +64,7 @@
         extension: "war"
         repository_url: "https://{{ nexus }}/repository/maven-releases/"
         username: "{{ ansible_user }}"
-        password: "{{ apass }}"
+        password: "{{ ansible_password }}"
         validate_certs: true
         dest: /opt/tomcat/webapps/speedtest.war
         mode: '0640'
