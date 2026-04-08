@@ -12,7 +12,7 @@
 #      - SecurityUpdates
 #      - CriticalUpdates
 #      - UpdateRollups
-      reboot: yes
+#      reboot: yes
     when: ansible_os_family == "Windows"
 
   - block:
