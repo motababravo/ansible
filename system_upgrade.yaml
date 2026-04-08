@@ -32,15 +32,17 @@
     when: ansible_os_family == "Debian"
 
   - block:
-      - name: Upgrade RHEL Family OS packages
-        become: yes
-        vars:
-          ansible_python_interpreter: /usr/libexec/platform-python
-        yum:
-          name: '*'
-          state: latest
-      - name: yum clean all
-        command: yum clean all
-        args:
-          warn: false
-    when: ansible_os_family == "RedHat"
+    - name: Upgrade RHEL Family OS packages
+      become: yes
+      ansible.builtin.yum:
+        name: '*'
+        state: latest
+      vars:
+        ansible_python_interpreter: /usr/libexec/platform-python
+
+    - name: Clean yum cache
+      become: yes
+      command: yum clean all
+      args:
+        warn: false
+  when: ansible_os_family == "RedHat"
