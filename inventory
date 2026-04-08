@@ -4,5 +4,5 @@ ltc ansible_host=192.168.78.58
 opc ansible_host=192.168.178.195 ansible_python_interpreter=/usr/bin/python3.6.8
 pi4 ansible_host=192.168.78.41 ansible_python_interpreter=/usr/bin/python3.7.3
 op5 ansible_host=192.168.78.49
-win ansible_host=192.168.78.96 ansible_connection=winrm
+win ansible_host=192.168.78.96 ansible_connection=winrm ansible_winrm_transport=ntlm
 #rhel ansible_python_interpreter=/usr/bin/python3.11 ansible_host=192.168.1.252
