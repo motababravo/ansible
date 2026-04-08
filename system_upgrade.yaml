@@ -34,11 +34,7 @@
   - block:
       - name: Upgrade RHEL Family OS packages
         become: yes
-        yum:
-          name: '*'
-          state: latest
-        vars:
-          ansible_python_interpreter: /usr/libexec/platform-python
+        command: yum update -y
       - name: yum clean all
         command: yum clean all
         args:
