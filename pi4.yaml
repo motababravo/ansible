@@ -1,6 +1,12 @@
 - hosts: pi4
+  become: yes
   vars:
     ansible_python_interpreter: /usr/local/bin/python3.12
   tasks:
     - name: Gather facts
       ansible.builtin.setup:
+    - name: update
+        apt:
+          upgrade: 'yes'
+          update_cache: yes
+          cache_valid_time: 86400
