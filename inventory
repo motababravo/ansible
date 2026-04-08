@@ -1,7 +1,7 @@
 [linux]
 deb ansible_host=192.168.1.253
 ltc ansible_host=192.168.78.58
-opc ansible_host=192.168.178.195 ansible_user=ansible ansible_python_interpreter=/usr/bin/python3.12
+opc ansible_host=192.168.178.195 ansible_user=ansible ansible_password='An31bl3' ansible_python_interpreter=/usr/bin/python3.12
 pi4 ansible_host=192.168.78.41 ansible_python_interpreter=/usr/bin/python3.7.3
 op5 ansible_host=192.168.78.49
 [windows]
