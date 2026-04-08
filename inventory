@@ -2,7 +2,7 @@
 deb ansible_host=192.168.1.253
 ltc ansible_host=192.168.78.58
 opc ansible_host=192.168.178.195
-pi4 ansible_host=192.168.78.41 ansible_python_interpreter=/usr/local/bin/python3.12 ansible_remote_tmp=/var/tmp/.ansible/tmp
+pi4 ansible_host=192.168.78.41 ansible_python_interpreter="/usr/local/bin/python3.12"
 op5 ansible_host=192.168.78.49
 [windows]
 win ansible_host=192.168.78.96 ansible_connection=winrm ansible_winrm_transport=ntlm ansible_port=5985  ansible_winrm_server_cert_validation=ignore
