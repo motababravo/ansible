@@ -13,7 +13,7 @@
 #      - CriticalUpdates
 #      - UpdateRollups
 #      reboot: yes
-    when: ansible_os_family == "Windows"
+    when: ansible_facts['os_family'] == "Windows"
 
   - block:
       - name: Update and upgrade apt packages
@@ -29,7 +29,7 @@
 #          autoremove: yes
 #          purge: true
 #          clean: yes
-    when: ansible_os_family == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
 
   - block:
       - name: Upgrade RHEL Family OS packages
@@ -37,4 +37,4 @@
         command: yum update -y
       - name: yum clean all
         command: yum clean all
-    when: ansible_os_family == "RedHat"
+    when: ansible_facts['os_family'] == "RedHat"
